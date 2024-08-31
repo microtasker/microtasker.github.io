@@ -13,59 +13,114 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroTasker</title>
+    <title>MicroTasker - Your One-Stop Solution for Freelance Services</title>
+    <meta name="description"
+        content="MicroTasker provides top-notch freelance services in web development, graphic design, and more. Discover how we can help your business thrive with our professional solutions.">
     <link rel="stylesheet" href="Css/style.css">
     <link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/97e9dcf34a.js" crossorigin="anonymous"></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
     </style>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R5KD0G75F9"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
-    gtag('config', 'G-R5KD0G75F9');
-</script>
 
 <body>
-    <!-- Messenger Chat plugin Code -->
-    <div id="fb-root"></div>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/66d1d59a50c10f7a00a214ac/1i6hqkpak';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <!-- The Pop-Up Modal -->
+    <div id="newsletter-popup" class="popup-overlay">
+        <div class="popup-content">
+            <span class="popup-close" id="close-popup">&times;</span>
+            <div class="animation">
+                <div class="svg">
+                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                        type="module"></script>
 
-    <!-- Your Chat plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
+                    <dotlottie-player src="https://lottie.host/175604cd-2dd3-4744-a757-a6f2f3d22efc/Xo2efU7CFo.json"
+                        background="transparent" speed="1" style="width: 300px; height: 300px;" loop
+                        autoplay></dotlottie-player>
+                </div>
+            </div>
+
+            <h2 id="heading">Subscribe to Our Newsletter</h2>
+            <p>Stay updated with our latest news and offers. Enter your email to subscribe:</p>
+            <br>
+            <form action="https://formspree.io/f/xdknpgrj" method="post" id="subscribe-form">
+                <input name="Subscriber" type="email" id="email" placeholder="Enter your email" required>
+                <br>
+                <button class="popup-btn" type="submit">Subscribe</button>
+            </form>
+        </div>
+        <!-- logic -->
     </div>
+    <div id="subscribe-popup2" class="popup2">
+        <div class="animation">
+            <div class="svg">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                    type="module"></script>
 
-    <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "112568905060703");
-        chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
+                <dotlottie-player src="https://lottie.host/9ff44c54-bf09-45d2-8401-3a138991c913/QFCFkE5lM4.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop
+                    autoplay></dotlottie-player>
+            </div>
 
-    <!-- Your SDK code -->
+
+        </div>
+        <p>Thank you for subscribing to our newsletter!</p>
+        <button onclick="closed()">Close</button>
+    </div>
+    </div>
+    </div>
     <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                xfbml: true,
-                version: 'v18.0'
+        var form = document.getElementById("subscribe-form");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("subscribe-form");
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById("subscribe-popup2").style.display = 'block';
+                    form.reset()
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                        } else {
+                            status.innerHTML = "Oops! There was a problem submitting your form"
+                        }
+                    })
+                }
+            }).catch(error => {
+                status.innerHTML = "Oops! There was a problem submitting your form"
             });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        }
+        form.addEventListener("submit", handleSubmit)
     </script>
+    <!-- loader -->
     <div id="loading" class="loader">
         <img width="300px" src="imgs/00.gif" alt="">
 
@@ -117,7 +172,7 @@
             font-family: 'Roboto', sans-serif;
         }
     </style>
-    <script src="index.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Simulate a delay (you can replace this with your actual loading logic)
@@ -145,16 +200,7 @@
 
     <div id="content" class="hidden">
         <!-- currentley unavilable -->
-        <div id="sorry" class="unavailble">
-            <div class="vector">
-                <img width="250px" src="imgs/sorry.png" alt="">
-            </div>
-            <h4>Sorry but this system is currentley unavailable</h4>
-            <br>
-            <div class="okay">
-                <button onclick="sorryc()">Okay</button>
-            </div>
-        </div>
+
         <div id="navm" class="rnav">
             <!-- head of responsive menu -->
             <div class="rhead">
@@ -197,13 +243,14 @@
             </div>
         </div>
 
-        <header>
+        <header id="background">
+
             <nav>
                 <!-- logo -->
                 <div class="logo">
-                    <img src="imgs/logo.png" alt="">
+                    <img src="imgs/logo.svg" alt="microtasker">
                 </div>
-                <!-- menu oprn button for mobile -->
+                <!-- menu open button for mobile -->
                 <div class="rtoogle">
                     <h4 onclick="mobile()"><i class="fa-solid fa-bars"></i></h4>
                 </div>
@@ -216,10 +263,14 @@
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="projects.html">Projects</a></li>
+                        <li><a target="_blank" href="https://bit.ly/4b03Mki"><button class="Subscribe"><i
+                                        class="fa-brands fa-youtube"></i> <span> Subscribe
+                                        us</span></button></a></li>
                     </ul>
                 </div>
             </nav>
-            <!-- tagline of heador -->
+            <!-- tagline of header -->
+            <div class="overlay"></div> <!-- Overlay added here -->
             <div class="center">
                 <div class="ctext">
                     <h1>Your Mini-Mission <br> Marketplace</h1>
@@ -230,169 +281,309 @@
                     <div class="btns">
                         <ul>
                             <li><a href="services.html"><button id="post">Post Your Task</button></a></li>
-                            <li><button onclick="sorry()" id="freelance">Join as Tasker</button></li>
+
+                            <li>
+                                <a target="_blank" href="https://bit.ly/3u0dlNi"><button id="freelance">
+                                        <div class="fimg"></div><img src="imgs/fiverr-icon.svg" alt="">
+                                        <div class="ftext">Order on Fiver</div>
+                                    </button></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="cimg">
-                    <img src="imgs/i12.png" alt="">
+                    <!-- <img src="imgs/i12.png" alt=""> -->
                 </div>
             </div>
         </header>
-        <main>
-            <div class="section1">
-                <div class="tx2">
-                    <h2>Browe our Awsome <br> Projects</h2>
-                    <p>"Welcome to our project showcase! We take immense pride in our diverse portfolio of innovative
-                        initiatives that span various domains. Our projects reflect our commitment to excellence,
-                        creativity, and problem-solving.</p>
-                    <br>
-                    <div class="btn2">
-                        <a href="projects.html"><button>
-                                Browse Now</button></a>
-                    </div>
-                </div>
-                <div class="colege">
-                    <img src="imgs/college.png" alt="">
-                </div>
-            </div>
-            <div class="section2">
-                <div class="tx3">
-                    <h1>Get Your Dream Webiste</h1>
-                    <br>
-                    <p> A website establishes an online presence for your business. It serves as a virtual storefront
-                        that
-                        is accessible 24/7, allowing potential customers to find information about your products or
-                        services
-                        at any time.</p>
-                    <br>
-                    <a href="Forms/webform.html"><button>Get Your Website</button></a>
-                </div>
-            </div>
-            <div class="section3">
-                <div class="tx4">
-                    <h1>VIDEO EDITING</h1>
-                    <p>Video content is highly engaging and can effectively convey your brand message. Businesses use
-                        video
-                        editing to create promotional videos, commercials, product demos, and social media content to
-                        attract and engage their target audience. Video content is popular on social media platforms
-                        like
-                        YouTube, Instagram, Facebook, and LinkedIn. Video editing is crucial for creating eye-catching,
-                        shareable content for these platforms.</p>
-                    <br>
-                    <div class="btn2">
-                        <a href="Forms/videoform.html"><button></i> Get Service</button></a>
-                    </div>
-                </div>
-                <div class="vector2">
-                    <img src="imgs/vector2.png" alt="">
-                </div>
-            </div>
-            <div class="section4">
 
-                <div class="vector3">
-                    <img src="imgs/graphic.svg" alt="">
-                </div>
-                <div class="tx4">
-                    <h1>GRAPHIC DESIGN</h1>
-                    <p>Graphic design is central to creating and maintaining a strong brand identity. Logos, color
-                        schemes,
-                        typography, and visual elements all contribute to how a company is perceived by its audience.
-                        Consistency in design across all materials helps establish brand recognition and trust.</p>
-                    <br>
-                    <div class="btn2">
-                        <a href="Forms/graphicform.html"><button> </i> Get Service</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="section5">
-                <div class="tx6">
-                    <h2>OUR PAYMENT METHODS</h2>
-                </div>
-                <div class="paymentmethod">
-                    <ul>
-                        <li><img src="imgs/pay11.png" alt="eayspais"></li>
-                        <li><img src="imgs/pay22.png" alt=""></li>
-                        <li><img src="imgs/Payoneer_logo.svg.png" alt=""></li>
-                    </ul>
-                    <div class="btn3">
-                        <a href="payment.html"><button>Learn More</button></a>
-                    </div>
-                </div>
-                <div class="other" id="others">
-                    <div class="select">
-                        <h2>Select</h2>
-                        <ul>
-                            <li><a href="https://bit.ly/3u0dlNi"><img src="imgs/Fiverr-Logo.png" alt=""></a></li>
-                            <li>
-                                <p>OR</p>
-                            </li>
-                            <li><a href="https://bit.ly/3GKz4Ag"><img src="imgs/upwork.png" alt=""></a></li>
-                        </ul>
-                    </div>
-                </div>
-        </main>
-        <footer>
-            <div class="fsocial">
-                <div class="tx7">
-                    <h4>Get connected with us on social network</h4>
-                </div>
-                <div class="sociallinks">
-                    <ul>
-                        <li><a target="_blank" href="https://bit.ly/3MyFlBX"><i class="fa-brands fa-facebook-f"></i></a>
-                        </li>
-                        <li><a target="_blank" href="https://www.instagram.com/microtasker_/e/"><i
-                                    class="fa-brands fa-instagram"></i></a></li>
-                        <li><a target="_blank" href="https://bit.ly/49Tcq4U"><i
-                                    class="fa-brands fa-pinterest-p"></i></a></li>
-                        <li><a target="_blank" href="https://bit.ly/3NK0UiQ"><i class="fa-brands fa-linkedin"></i></a>
-                        </li>
-                        <li><a target="_blank" href="https://bit.ly/41mVPS5"><i class="fa-brands fa-youtube"></i></a>
-                        </li>
-                        <li><a target="_blank" href="https://bit.ly/40YUZM4"><i class="fa-brands fa-twitter"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="fhead">
-                <div class="fmain">
-                    <div class="name">
-                        <div class="logo">
-                            <img src="imgs/logo.png" alt="">
+        <main>
+            <div class="reveal">
+                <div class="section1">
+
+                    <div class="tx2">
+                        <h2>Browe our Awsome <br> Projects</h2>
+                        <p>"Welcome to our project showcase! We take immense pride in our diverse portfolio of
+                            innovative
+                            initiatives that span various domains. Our projects reflect our commitment to excellence,
+                            creativity, and problem-solving.</p>
+                        <br>
+                        <div class="btn2">
+                            <a href="projects.html"><button style="background-color: black; color: white;">
+                                    Browse Now</button></a>
                         </div>
-                        <p>Our platform connects task seekers with a network of skilled microtaskers, enabling you to
-                            effortlessly accomplish tasks that fit your schedule and budget.
-                        </p>
                     </div>
-                    <div class="links">
-                        <h3>Usefull links</h3>
-                        <ul>
-                            <li><a href="Terms.html">Terms&condtions</a></li>
-                            <li><a href="">How to Order</a></li>
-                            <li><a target="_blank" href="https://bit.ly/3RhdHLZ">OurBlog</a></li>
-                            <li style="font-family: 'Lato', sans-serif; cursor: pointer;" onclick="fiver()">Get us on
-                                other
-                                market places</li>
-                        </ul>
-                    </div>
-                    <div class="contact">
-                        <h3>Contact</h3>
-                        <ul>
-                            <li><a href="mailto:muhmadmuneeb13@gmail.com"><i class="fa-solid fa-envelope"></i> Click me to send</a></li>
-                            <li><a href="https://bit.ly/44ynFwj"><i class="fa-brands fa-whatsapp"> </i>
-                                    +923234673347</a></li>
-                            <li><a href=""><i class="fa-solid fa-phone"></i> +923234673347</a></li>
-                            <li><a href="https://t.me/microtasker"><i class="fa-brands fa-telegram"></i>
-                                @microtasker</a></li>
-                        </ul>
+                    <div class="intro-video">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/_-KLAPmoAK8?si=sVxozk-gE4aHH-Cc"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
-            <div  class="copyright">
-                <p class="credit">&copy;Copyright Microtasker 2023</p>
+            <div class="reveal">
+                <div class="section2">
+                    <div class="tx3">
+                        <h1>Get Your Dream Webiste</h1>
+                        <br>
+                        <p> A website establishes an online presence for your business. It serves as a virtual
+                            storefront
+                            that
+                            is accessible 24/7, allowing potential customers to find information about your products or
+                            services
+                            at any time.</p>
+                        <br>
+                        <a href="Forms/webform.html"><button id="fix">Get Your Website</button></a>
+                    </div>
+                </div>
             </div>
-        </footer>
-    </div>
+            <div class="reveal">
+                <div class="section3">
+                    <div class="tx4">
+                        <h1>VIDEO EDITING</h1>
+                        <p>Video content is highly engaging and can effectively convey your brand message. Businesses
+                            use
+                            video
+                            editing to create promotional videos, commercials, product demos, and social media content
+                            to
+                            attract and engage their target audience. Video content is popular on social media platforms
+                            like
+                            YouTube, Instagram, Facebook, and LinkedIn. Video editing is crucial for creating
+                            eye-catching,
+                            shareable content for these platforms.</p>
+                        <br>
+                        <div class="btn2">
+                            <a href="Forms/videoform.html"><button style="background-color: black; color: white;"></i>
+                                    Get
+                                    Service</button></a>
+                        </div>
+                    </div>
+                    <div class="vector2">
+                        <img src="imgs/social media video editing.svg" alt="social media video editing">
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="section4">
+
+                    <div class="vector3">
+                        <img src="imgs/creative-graphic-design-solutions.svg" alt="creative-graphic-design-solutions">
+                    </div>
+                    <div class="tx4">
+                        <h1>GRAPHIC DESIGN</h1>
+                        <p>Graphic design is central to creating and maintaining a strong brand identity. Logos, color
+                            schemes,
+                            typography, and visual elements all contribute to how a company is perceived by its
+                            audience.
+                            Consistency in design across all materials helps establish brand recognition and trust.</p>
+                        <br>
+                        <div class="btn2">
+                            <a href="Forms/graphicform.html"><button> </i> Get Service</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="section5">
+                    <div class="tx6">
+                        <h1>OUR PAYMENT METHODS</h1>
+                    </div>
+                    <div class="paymentmethod">
+                        <ul>
+                            <li><img src="imgs/Easypaisa New Logo.svg" alt="EasyPaisa"></li>
+                            <li><img src="imgs/jazz cash logo.svg" alt="JazzCash"></li>
+                            <li><img src="imgs/Payoneer.svg" alt="Payoneer"></li>
+                        </ul>
+                        <div class="btn3">
+                            <a href="payment.html"><button>Learn More</button></a>
+                        </div>
+                    </div>
+                    <div class="other" id="others">
+                        <div class="select">
+                            <h2>Select</h2>
+                            <ul>
+                                <li><a href="https://bit.ly/3u0dlNi"><img src="imgs/Fiverr-Logo.png" alt=""></a></li>
+                                <li>
+                                    <p>OR</p>
+                                </li>
+                                <li><a href="https://bit.ly/3GKz4Ag"><img src="imgs/upwork.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="youtube-videos">
+                    <div class="yt-title">
+                        <h1>Watch our Awsome Content </h1>
+                    </div>
+                    <div class="yt-vdideos">
+                        <ul>
+                            <li>
+                                <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/yZN4Y8JT6Y4?si=aFiY5jIdoleE0Pr-"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </li>
+                            <li>
+                                <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/906lVR17maU?si=ZSIcyWU3BD339j2s"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </li>
+                            <li><iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/Edb-fEP7Q_0?si=ANA2_3yykdWbkc_4"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></li>
+                        </ul>
+
+                    </div>
+                    <div class="yt-button">
+                        <a target="_blank" href="https://bit.ly/4b03Mki"><button class="Subscribe"><i
+                                    class="fa-brands fa-youtube"></i> <span> Watch More On
+                                    Youtube
+                                </span></button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="bloger">
+                    <div class="blog-title">
+                        <h1>Read Our Usefull Blog Posts</h1>
+                    </div>
+                    <div class="blog-posts">
+                        <ul>
+                            <li>
+                                <div class="blog-post-card">
+                                    <img src="https://images.unsplash.com/photo-1672307974995-cd253f7f7eeb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="5 Essential Tips for Growing Your Online Business" class="blog-post-image">
+                                    <div class="blog-post-content">
+                                        <h2 class="blog-post-title">5 Essential Tips for Growing Your Online Business
+                                        </h2>
+                                        <p class="blog-post-description">Clean code is the foundation of a
+                                            well-functioning
+                                            website. When your code is neat and organized, it’s easier to maintain,
+                                            debug,
+                                            and update. </p>
+                                        <a target="_blank"
+                                            href="https://microtasker1.blogspot.com/2024/08/5-essential-tips-for-growing-your_76.html"
+                                            class="blog-post-link">Read More</a>
+                                    </div>
+                            </li>
+                            <li>
+                                <div class="blog-post-card">
+                                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifCrFDmIU4UX5ev_GrkdiL2ERzX_nwdZyFnqrmo85PbZySCcBQFUFm7p-119ojAQ43W_UTRbIa7pCXhiuTBYbe-NdvCo-zBNnqTb4yOa_8IXq7gbunoEefd7xbclNOT-qGz6clPNem69Oo15bMUkKK7y4Mfjk3UxifHfiSNv7ufNIpNVSz6aCP9nLulOP0/w640-h360/maxresdefault%20(1).jpg"
+                                        alt="Are AI Taking Jobs? Exploring the Impact of
+                                        Artificial" class="blog-post-image">
+                                    <div class="blog-post-content">
+                                        <h2 class="blog-post-title">Are AI Taking Jobs? Exploring the Impact of
+                                            Artificial
+                                            Intelligence on Employment</h2>
+                                        <p class="blog-post-description">In today's rapidly advancing world, the rise of
+                                            artificial intelligence (AI) has sparked a crucial question: Are AI taking
+                                            our
+                                            jobs? </p>
+                                        <a target="_blank"
+                                            href="https://microtasker1.blogspot.com/2024/05/are-ai-taking-jobs-exploring-impact-of.html"
+                                            class="blog-post-link">Read More</a>
+                                    </div>
+                            </li>
+                            <li>
+                                <div class="blog-post-card">
+                                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuqLpDkptRFmOK5RqYk2Ie2W3sIO41-1xD8-owjHhqwXBwpuX-LOFuiyw9Miq_xSWfxnrlCVGkG397juRAJOQ1gdJRr8Aiq8BEjMY4uWel7NXM-EhgZa3ju_TY7xnhCfNE7DjxkUjBSscdw-I8UigXCx8jAtwJQXG3uox4kmHbfPycPpIRNMOr6yW4WK3_/w524-h373/carlos-muza-hpjSkU2UYSU-unsplash.jpg"
+                                        alt="Why Your Website's First Impression Matters" class="blog-post-image">
+                                    <div class="blog-post-content">
+                                        <h2 class="blog-post-title">Why Your Website's First Impression Matters – Boost
+                                            Trust & Drive Sales</h2>
+                                        <p class="blog-post-description">
+                                            In today’s digital age, your website often serves as the first point of
+                                            contact
+                                            between your business and potential customers. </p>
+                                        <a target="_blank"
+                                            href="https://microtasker1.blogspot.com/2024/08/5-essential-tips-for-growing-your_76.html"
+                                            class="blog-post-link">Read More</a>
+                                    </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="reveal">
+        </main>
+        <div class="reveal">
+            <footer>
+                <div class="fsocial">
+                    <div class="tx7">
+                        <h4>Get connected with us on social network</h4>
+                    </div>
+                    <div class="sociallinks">
+                        <ul>
+                            <li><a target="_blank" href="https://bit.ly/3MyFlBX"><i
+                                        class="fa-brands fa-facebook-f"></i></a>
+                            </li>
+                            <li><a target="_blank" href="https://www.instagram.com/microtasker_/e/"><i
+                                        class="fa-brands fa-instagram"></i></a></li>
+                            <li><a target="_blank" href="https://bit.ly/49Tcq4U"><i
+                                        class="fa-brands fa-pinterest-p"></i></a></li>
+                            <li><a target="_blank" href="https://bit.ly/3NK0UiQ"><i
+                                        class="fa-brands fa-linkedin"></i></a>
+                            </li>
+                            <li><a target="_blank" href="https://bit.ly/41mVPS5"><i
+                                        class="fa-brands fa-youtube"></i></a>
+                            </li>
+                            <li><a target="_blank" href="https://bit.ly/40YUZM4"><i
+                                        class="fa-brands fa-twitter"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fhead">
+                    <div class="fmain">
+                        <div class="name">
+                            <div class="logo">
+                                <img src="imgs/logo.svg" alt="microtasker">
+                            </div>
+                            <p>Our platform connects task seekers with a network of skilled microtaskers, enabling you
+                                to
+                                effortlessly accomplish tasks that fit your schedule and budget.
+                            </p>
+                        </div>
+                        <div class="links">
+                            <h3>Usefull links</h3>
+                            <ul>
+                                <li><a href="Terms.html">Terms&condtions</a></li>
+                                <li><a href="">How to Order</a></li>
+                                <li><a target="_blank" href="https://bit.ly/3RhdHLZ">OurBlog</a></li>
+                                <li style="font-family: 'Lato', sans-serif; cursor: pointer;" onclick="fiver()">Get us
+                                    on
+                                    other
+                                    market places</li>
+                            </ul>
+                        </div>
+                        <div class="contact">
+                            <h3>Contact</h3>
+                            <ul>
+                                <li><a href="mailto:muhmadmuneeb13@gmail.com"><i class="fa-solid fa-envelope"></i> Click
+                                        me
+                                        to send</a></li>
+                                <li><a href="https://bit.ly/44ynFwj"><i class="fa-brands fa-whatsapp"> </i>
+                                        +923234673347</a></li>
+                                <li><a href=""><i class="fa-solid fa-phone"></i> +923234673347</a></li>
+                                <li><a href="https://t.me/microtasker"><i class="fa-brands fa-telegram"></i>
+                                        @microtasker</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p class="credit">&copy;Copyright Microtasker 2023</p>
+                </div>
+            </footer>
+        </div>
+        <script src="index.js"></script>
 </body>
 
 </html>

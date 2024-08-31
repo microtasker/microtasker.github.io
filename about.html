@@ -15,6 +15,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MicroTasker</title>
+    <meta name="description"
+    content="MicroTasker provides top-notch freelance services in web development, graphic design, and more. Discover how we can help your business thrive with our professional solutions.">
     <link rel="stylesheet" href="Css/style.css">
     <link rel="stylesheet" href="Css/about.css">
     <link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
@@ -29,37 +31,21 @@
 </head>
 
 <body>
-    <!-- Messenger Chat plugin Code -->
-    <div id="fb-root"></div>
 
-    <!-- Your Chat plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
-
-    <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "112568905060703");
-      chatbox.setAttribute("attribution", "biz_inbox");
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/66d1d59a50c10f7a00a214ac/1i6hqkpak';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
+    <!--End of Tawk.to Script-->
 
-    <!-- Your SDK code -->
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v18.0'
-        });
-      };
-
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <script src="index.js"></script>
     <!-- Responsive menu -->
     <div id="navm" class="rnav">
         <!-- head of responsive menu -->
@@ -107,12 +93,13 @@
         <nav>
             <!-- logo -->
             <div class="logo">
-                <img src="imgs/logo.png" alt="">
+                <img src="imgs/logo.svg" alt="microtasker">
             </div>
-            <!-- menu oprn button for mobile -->
+            <!-- menu open button for mobile -->
             <div class="rtoogle">
                 <h4 onclick="mobile()"><i class="fa-solid fa-bars"></i></h4>
             </div>
+
             <!-- menu for pc and big devices -->
             <div class="menu">
                 <ul>
@@ -121,6 +108,9 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="projects.html">Projects</a></li>
+                    <li><a target="_blank" href="https://bit.ly/4b03Mki"><button class="Subscribe"><i
+                                    class="fa-brands fa-youtube"></i> <span> Subscribe
+                                    us</span></button></a></li>
                 </ul>
             </div>
         </nav>
@@ -128,7 +118,7 @@
             <div class="ctext2">
                 <h1>Welome To Microtasker</h1>
                 <br>
-                <p> your go-to platform for getting small tasks done quickly and efficiently. Our mission is to connect
+                <p class="headpara"> your go-to platform for getting small tasks done quickly and efficiently. Our mission is to connect
                     individuals and businesses with talented freelancers who can help with a wide range of tasks, no
                     matter how big or small.</p>
 
@@ -136,9 +126,10 @@
             </div>
     </header>
     <main>
+        <div class="reveal">
         <div class="story">
             <div class="stext">
-                <h2>Our Story</h2>
+                <h1>Our Story</h1>
                 <p>At MicroTasker, we believe in a world where everyone has the opportunity to contribute and thrive in
                     the
                     digital age. Our vision is to revolutionize the way people work, empowering individuals to harness
@@ -146,21 +137,25 @@
                     skills and earn income in a flexible, transparent, and decentralized environment.</p>
             </div>
         </div>
+        </div>
+        <div class="reveal">
         <div class="mission">
             <div class="mtext">
-                <h2>Our Misson</h2>
+                <h1>Our Misson</h1>
                 <p>Our mission is simple yet profound: to connect individuals with tasks that match their skills,
                     interests, and schedules while enabling businesses and organizations to access the diverse talents
                     that Neotropolis has to offer. We strive to make work more accessible, equitable, and rewarding for
                     all.</p>
             </div>
-            <div class="mvideo">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/AS9GozCJZJ4?si=4DVqzqztbTEHXHLr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="intro-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/_-KLAPmoAK8?si=sVxozk-gE4aHH-Cc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
-        <div class="way">
-            <div class="waytext">
-                <h2>Why Chose Us</h2>
+        </div>
+        <div class="reveal">
+        <div  class="way">
+            <div class="way-chose-us">
+                <h1>Why Chose Us</h1>
             </div>
             <div class="waylist">
                 <ul>
@@ -195,9 +190,11 @@
                 </ul>
             </div>
         </div>
+        </div>
+        <div class="reveal">
         <div id="Values" class="way">
             <div class="waytext">
-                <h2>Our Values</h2>
+                <h1>Our Values</h1>
             </div>
             <!-- values -->
             <div class="waylist">
@@ -205,7 +202,7 @@
                     <li>
                         <div class="w12">
                             <div class="evector">
-                                <img src="about/ex.jpg" alt="">
+                                <img src="imgs/excclence.svg" alt="excclence">
                             </div>
                             <h3>Excellence</h3>
                             <p> We aim for excellence in all that we do. We hold ourselves to the highest standards to
@@ -216,7 +213,7 @@
                     <li>
                         <div class="w12">
                             <div class="evector">
-                                <img src="about/coll.svg" alt="">
+                                <img src="about/coll.svg" alt="collaboration">
                             </div>
                             <h3>Collaboration</h3>
                             <p>
@@ -228,7 +225,7 @@
                     <li>
                         <div class="w12">
                             <div class="evector">
-                                <img src="about/in.svg" alt="">
+                                <img src="about/in.svg" alt="innovation">
                             </div>
                             <h3>Innovation</h3>
                             <p>In a constantly evolving world, we embrace innovation. We are dedicated to staying at the
@@ -240,6 +237,7 @@
             </div>
         </div>
         </div>
+        <div class="reveal">
         <div class="start">
             <h1>Get Started Today</h1>
             <p>Join the MicroTasker community and experience the future of microtasking. Whether you're a business
@@ -252,6 +250,8 @@
                 <a href="services.html"><button>Get Started</button></a>
             </div>
         </div>
+        </div>
+        <div class="reveal">
         <div class="other" id="others">
             <div class="select">
                 <h2>Select</h2>
@@ -264,68 +264,72 @@
                 </ul>
             </div>
         </div>
+        </div>
     </main>
-    <footer>
-        <div class="fsocial">
-            <div class="tx7">
-                <h4>Get connected with us on social network</h4>
+    <div class="reveal">
+        <footer>
+            <div class="fsocial">
+                <div class="tx7">
+                    <h4>Get connected with us on social network</h4>
+                </div>
+                <div class="sociallinks">
+                    <ul>
+                        <li><a target="_blank" href="https://bit.ly/3MyFlBX"><i class="fa-brands fa-facebook-f"></i></a>
+                        </li>
+                        <li><a target="_blank" href="https://www.instagram.com/microtasker_/e/"><i
+                                    class="fa-brands fa-instagram"></i></a></li>
+                        <li><a target="_blank" href="https://bit.ly/49Tcq4U"><i
+                                    class="fa-brands fa-pinterest-p"></i></a></li>
+                        <li><a target="_blank" href="https://bit.ly/3NK0UiQ"><i class="fa-brands fa-linkedin"></i></a>
+                        </li>
+                        <li><a target="_blank" href="https://bit.ly/41mVPS5"><i class="fa-brands fa-youtube"></i></a>
+                        </li>
+                        <li><a target="_blank" href="https://bit.ly/40YUZM4"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="sociallinks">
-                <ul>
-                    <li><a target="_blank" href="https://bit.ly/3MyFlBX"><i class="fa-brands fa-facebook-f"></i></a>
-                    </li>
-                    <li><a target="_blank" href="https://www.instagram.com/microtasker_/e/"><i
-                                class="fa-brands fa-instagram"></i></a></li>
-                    <li><a target="_blank" href="https://bit.ly/49Tcq4U"><i
-                                class="fa-brands fa-pinterest-p"></i></a></li>
-                    <li><a target="_blank" href="https://bit.ly/3NK0UiQ"><i class="fa-brands fa-linkedin"></i></a>
-                    </li>
-                    <li><a target="_blank" href="https://bit.ly/41mVPS5"><i class="fa-brands fa-youtube"></i></a>
-                    </li>
-                    <li><a target="_blank" href="https://bit.ly/40YUZM4"><i class="fa-brands fa-twitter"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="fhead">
-            <div class="fmain">
-                <div class="name">
-                    <div class="logo">
-                        <img src="imgs/logo.png" alt="">
+            <div class="fhead">
+                <div class="fmain">
+                    <div class="name">
+                        <div class="logo">
+                            <img src="imgs/logo.svg" alt="microtasker">
+                        </div>
+                        <p>Our platform connects task seekers with a network of skilled microtaskers, enabling you to
+                            effortlessly accomplish tasks that fit your schedule and budget.
+                        </p>
                     </div>
-                    <p>Our platform connects task seekers with a network of skilled microtaskers, enabling you to
-                        effortlessly accomplish tasks that fit your schedule and budget.
-                    </p>
-                </div>
-                <div class="links">
-                    <h3>Usefull links</h3>
-                    <ul>
-                        <li><a href="Terms.html">Terms&condtions</a></li>
-                        <li><a href="">How to Order</a></li>
-                        <li><a target="_blank" href="https://bit.ly/3RhdHLZ">OurBlog</a></li>
-                        <li style="font-family: 'Lato', sans-serif; cursor: pointer;" onclick="fiver()">Get us on
-                            other
-                            market places</li>
-                    </ul>
-                </div>
-                <div class="contact">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li><a href="mailto:muhmadmuneeb13@gmail.com"><i class="fa-solid fa-envelope"></i> Click me to send</a></li>
-                        <li><a href="https://bit.ly/44ynFwj"><i class="fa-brands fa-whatsapp"> </i>
-                                +923234673347</a></li>
-                        <li><a href=""><i class="fa-solid fa-phone"></i> +923234673347</a></li>
-                        <li><a href="https://t.me/microtasker"><i class="fa-brands fa-telegram"></i>
-                            @microtasker</a></li>
-                    </ul>
+                    <div class="links">
+                        <h3>Usefull links</h3>
+                        <ul>
+                            <li><a href="Terms.html">Terms&condtions</a></li>
+                            <li><a href="">How to Order</a></li>
+                            <li><a target="_blank" href="https://bit.ly/3RhdHLZ">OurBlog</a></li>
+                            <li style="font-family: 'Lato', sans-serif; cursor: pointer;" onclick="fiver()">Get us on
+                                other
+                                market places</li>
+                        </ul>
+                    </div>
+                    <div class="contact">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><a href="mailto:muhmadmuneeb13@gmail.com"><i class="fa-solid fa-envelope"></i> Click me
+                                    to send</a></li>
+                            <li><a href="https://bit.ly/44ynFwj"><i class="fa-brands fa-whatsapp"> </i>
+                                    +923234673347</a></li>
+                            <li><a href=""><i class="fa-solid fa-phone"></i> +923234673347</a></li>
+                            <li><a href="https://t.me/microtasker"><i class="fa-brands fa-telegram"></i>
+                                    @microtasker</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="copyright">
-            <p class="credit">&copy;Copyright Microtasker 2023</p>
-        </div>
-    </footer>
-
+            <div class="copyright">
+                <p class="credit">&copy;Copyright Microtasker 2023</p>
+            </div>
+        </footer>
+    </div>
+    <script src="index.js"></script>
 </body>
 
 </html>
