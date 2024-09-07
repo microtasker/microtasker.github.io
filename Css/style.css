@@ -1411,12 +1411,15 @@ width: 100%;
         width: 300px;
         height: 200px;
     }
-    .section1 iframe{
+    #introdouction{
         width: 300px;
         height: 200px;
         margin-top: 200px;
     }
-s
+.section1 iframe{
+    width: 300px;
+    height: 200px;
+}
     .yt-title{
        
         font-size: 10px;
