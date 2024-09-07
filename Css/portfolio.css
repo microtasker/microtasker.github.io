@@ -57,3 +57,14 @@ body{
     padding: 20px;
     text-align: center;
 }
+.coleges img{
+    width: 600px;
+}
+@media screen and (max-width:627px) {
+    .coleges img{
+        width: 300px;
+    }
+    #web-img img{
+width: 300px;
+    }
+}
