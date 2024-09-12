@@ -19,6 +19,7 @@ h1{
     width: 340px;
     height: 550px;
     border-radius: 20px;
+
     
 }
 .s1text h2{
@@ -26,6 +27,7 @@ h1{
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
+ 
 }
 .s1texp{
     font-family: "Open Sans", sans-serif;
@@ -36,9 +38,13 @@ h1{
 }
 body{
     background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .main2{
     text-align: center;
+    
 }
 .sbutton button{
     width: 130px;
@@ -67,7 +73,12 @@ body{
 }
 
 .servicelist{
-    padding: 40px;
+    /* padding: 40px; */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
 }
 
 .servicetitle{
@@ -75,9 +86,11 @@ body{
     color: white;
     font-family: 'Roboto', sans-serif;
     margin-top: 80px;
+ 
 }
 .s1text h2{
     font-family: 'Roboto', sans-serif;
+
 }
 .s1text p{
     font-family: 'Lato', sans-serif;
@@ -114,11 +127,20 @@ animation: back 5s ease 0s 1 normal forwards;
 		transform: translateX(0);
 	}
 }
-@media screen and (max-width:437px) {
+@media screen and (max-width:561px) {
     .s1{
         width: 280px;
     }
     .s1 img{
         width: 280px;
     }
+    .servicetitle{
+        width: 250px;
+        font-size: 10px;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    
 }
