@@ -3,6 +3,7 @@
     margin:10px;
  cursor: pointer;
 }
+
 body{
     background-color: black;
     
@@ -60,6 +61,10 @@ body{
 .coleges img{
     width: 600px;
 }
+.coleges{
+    margin: 0;
+}
+
 @media screen and (max-width:627px) {
     .coleges img{
         width: 300px;

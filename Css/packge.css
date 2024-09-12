@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.pricing-section {
+    padding: 50px 0;
+    text-align: center;
+    
+}
+
+.section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.package-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+}
+
+.package-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.package-price {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #27ae60;
+}
+
+.package-features {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.package-features li {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.btns {
+    text-decoration: none;
+    color: #fff;
+    background-color: #27ae60;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btns:hover {
+    background-color: #219150;
+    color: white;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+main{
+    display: none;
+}
+.pricing-section {
+    padding: 40px;
+    background-color: #fff;
+}
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.package-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+.package-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.package-price {
+    font-size: 36px;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+.package-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.package-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+.package-features li:last-child {
+    border-bottom: none;
+}
+.btns {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #5cb85c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.btns:hover {
+    background-color: #4cae4c;
+    color: white;
+}
+#select{
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .package-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+@media screen and (max-width:412px) {
+    .package-card{
+        width: 300px;
+    }
+}

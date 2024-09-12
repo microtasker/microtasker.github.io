@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-
+  
 }
 
 .ctext{
@@ -215,13 +215,14 @@ p,a{
     "wdth" 100;
 
 }
-.tx1,.tx2,.tx3.tx4,.tx5,.tx6,.tx7{
+.tx1,.tx2,.tx3.tx4,.tx5,.tx6{
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings:
       "wdth" 100;
   
+      
 }
 button{
     font-family: "Montserrat", sans-serif;
@@ -1273,8 +1274,23 @@ width: 100%;
         flex-direction: column-reverse;
         text-align: center;
         height: auto;
+        
 
-
+    }
+    .fsocial ul li{
+       margin: 10px;
+    }
+    .tx7{
+        font-size: small;
+     
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+       right: 20px;
+    }
+    .fsocial{
+        width: 100%;
     }
    
 .tx2{
@@ -1414,7 +1430,7 @@ width: 100%;
     #introdouction{
         width: 300px;
         height: 200px;
-        margin-top: 200px;
+     
     }
 .section1 iframe{
     width: 300px;
