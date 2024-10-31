@@ -1,0 +1,146 @@
+/* imgs of services */
+.s1img img{
+    width: 300px;
+    height: 300px;
+    border-top-right-radius:20px;
+    border-top-left-radius:20px;
+}
+
+h1{
+    font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+
+}
+.s1{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    width: 340px;
+    height: 550px;
+    border-radius: 20px;
+
+    
+}
+.s1text h2{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+ 
+}
+.s1texp{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+}
+body{
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main2{
+    text-align: center;
+    
+}
+.sbutton button{
+    width: 130px;
+    height: 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+.servicelist ul li{
+    display: inline-flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+
+}
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.servicelist{
+    /* padding: 40px; */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.servicetitle{
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 80px;
+ 
+}
+.s1text h2{
+    font-family: 'Roboto', sans-serif;
+
+}
+.s1text p{
+    font-family: 'Lato', sans-serif;
+}
+.s1text{
+    padding: 20px;
+    height: 100px;
+}
+.back{
+    position: fixed;
+    bottom: 0px;
+    left: 0px; 
+    bottom: 10px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    margin-left: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+animation: back 5s ease 0s 1 normal forwards;
+}
+@keyframes back {
+	0% {
+		opacity: 0;
+		transform: translateX(-250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@media screen and (max-width:561px) {
+    .s1{
+        width: 280px;
+    }
+    .s1 img{
+        width: 280px;
+    }
+    .servicetitle{
+        width: 250px;
+        font-size: 10px;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    
+}

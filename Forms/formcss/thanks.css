@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+h2{
+    font-family: "Montserrat", sans-serif;
+    text-align: center; 
+}
+.mailicon img{
+    width: 400px;
+}
+.mailicon{
+    text-align: center;
+    width: 100%;
+
+}
+p{
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    width: auto;
+}
+.button button{
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    background-color: #000000;
+    color: white;
+}
+.button{
+    width: 100%;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+ margin-top: 10px;
+}
+.thmain{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.center{
+    /* background-color: aqua; */
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+   
+    width: 100%;
+
+}
+.text{
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width:400px) {
+   .text{
+    width: 250px;
+   }
+   .mailicon img{
+    width: 250px;
+   }
+}

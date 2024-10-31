@@ -1,0 +1,1475 @@
+* {
+    margin: 0;
+    padding: 0;
+  
+}
+
+.ctext{
+    /* background-color: #1DBE73; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: white;
+    z-index: 1;
+    
+}
+.sucess{
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    width: 400px;
+    height: 160px;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+    /* background-color: #fff; */
+    display: none;
+}
+.popup2 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #ffffff; /* Green background */
+    color: rgb(0, 0, 0); /* White text */
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Make sure it's on top */
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5)
+}
+.popup2 button{
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #000;
+    color: white;
+    border-radius: 10px;
+}
+
+.popup svg {
+    margin-bottom: 10px;
+}
+
+.svgs{
+    background-color: white    ;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.animate{
+ background-color: #40E15D;
+}
+/* Ensure .rnav is positioned properly and has a higher z-index */
+#navm {
+    position: fixed; /* Make it stay on top when scrolling */
+    top: 0; /* Align to top of the viewport */
+    left: 0; /* Align to left of the viewport */
+    width: 100%; /* Full width */
+    background-color: #000; /* Adjust as needed */
+    z-index: 1000; /* Higher z-index to ensure it's above other content */
+    display: none; /* Hidden by default */
+}
+
+/* Style for .rhead inside .rnav */
+.rhead {
+    background-color: #1B1B1B;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001; /* Ensure it stays above .rmenu */
+}
+
+/* Style for .rmenu inside .rnav */
+.rmenu {
+    background-color: #000000;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Regular menu */
+.menu {
+
+    z-index: 1; /* Ensure it is below .rnav */
+}
+
+button:hover{
+  transition: 0.5s;
+    transform: scale(1.1); /* Scale the button up by 10% */
+}
+
+/* styles.css */
+
+/* Basic reset */
+/* pop */
+
+#background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    background-image: url("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+        transition: opacity 1s ease;
+        opacity: 1; /* Initial state */
+    
+}
+
+
+/* Create the overlay effect */
+#background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity to control darkness */
+    z-index: 1; /* Ensure overlay is above background */
+    
+}
+
+/* Ensure content stays above the overlay */
+nav, .center, .ctext, .btns, .cimg {
+    position: relative;
+    z-index: 2; /* Content above the overlay */
+}
+/* heador */
+header {
+    /* background-color: #5436CA; */
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        /* background-image: url(https://img.freepik.com/free-photo/videographer-adjusting-clips-while-enjoying-cup-coffee-office_482257-82270.jpg?t=st=1724083827~exp=1724087427~hmac=d861efe62b918c08b1c3884d89632b4aa8d2462aeebd06b35966aad618f64875&w=1380); */
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity to control darkness */
+    z-index: 1; /* Ensure overlay is above background */
+}
+/* Initial hidden state */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px); /* Shift down slightly */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Reveal state */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* Reset position */
+}
+
+/* center tagline */
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    /* background-color: red; */
+height: 100%;
+}
+h2{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+h1{
+    font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+p,a{
+
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+
+}
+.tx1,.tx2,.tx3.tx4,.tx5,.tx6{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  
+      
+}
+button{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+.blog-post-link{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+/* Pop-Up Overlay */
+.popup-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Pop-Up Content */
+.popup-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+
+}
+@keyframes myAnim {
+	0% {
+		transform: scale(0.5);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+/* Close Button */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.animation{
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+/* Form Elements */
+#subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+#email {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#email:focus{
+    outline: none;
+}
+
+.popup-btn{
+    padding: 10px;
+    background-color: #ffffff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid black;
+    color: black;
+
+}
+
+
+.popup-btn:hover {
+    background-color: #000000;
+    border: 1px;
+    color: white;
+    transform: translate(0);
+}
+
+ button:hover {
+    transition: 0.5s;
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  #fix:hover {
+    transition: 0.5s;
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+
+
+/* top navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Logo */
+.logo img {
+    width: 180px;
+}
+
+/* menu links */
+.menu ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+/* menu likns a */
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Tagline */
+.center h1 {
+    font-size: 60px;
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: bold;
+      font-style: normal;
+    }
+
+
+
+.ctext {
+    width: 600px;
+    margin-left: 10px;
+    padding-left: 10px;
+    color: white;
+    animation: center 1s ease 0s 1 normal forwards;
+}
+.ctext p{
+    font-size: 20px;
+}
+
+/* aniamtion keyframe for tagline */
+@keyframes center {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* tagline paragraph */
+
+
+
+
+/* headorbuttons */
+.btns ul li {
+    display: inline-block;
+    margin: 10px;
+
+}
+.btns ul li a {
+text-decoration: none;
+
+}
+
+.btns button {
+    width: 200px;
+    height: 55px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: none;
+   
+}
+.btns{
+display: flex;
+}
+
+/* join as freelancer */
+
+#freelance img{
+    width: 40px;
+}
+#freelance a{
+    text-decoration: none;
+}
+/* post your task */
+#post {
+    color: #000000;
+    
+}
+#freelance{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+ 
+    border: none;
+    background-color: #1DBE73;
+    color: white;
+
+
+}
+.Subscribe {
+    background-color: red;
+    padding: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+/* image of man carryning laptop */
+.cimg img {
+    width: 300px;
+    position: relative;
+    top: 20px;
+}
+
+.cimg {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+}
+
+/* section2 */
+.section1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 80px;
+   height: 100vh;
+ 
+
+
+}
+
+/* text of section1 */
+.tx2 h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 40px;
+}
+
+/* img of second section */
+.colege img {
+    width: 600px;
+}
+
+/* grow your bussiness style */
+.tx2 {
+    width: 50%;
+    height: 300px;
+    padding-left: 20px;
+
+}
+.tx2 p{
+    font-size: 20px;
+}
+/* grow your business paragraph */
+
+
+/* section2 */
+.btn2 button {
+    background-color: #ffffff;
+    width: 200px;
+    height: 60px;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+
+}
+.btn2{
+  
+    padding: 20px;
+}
+
+/* section3 */
+.section2 {
+    position: relative;
+    background-image: url(https://images.unsplash.com/photo-1623479322729-28b25c16b011?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    color: #fff; /* Text color */
+
+}
+
+.section2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: 1; /* Ensure overlay is above background image */
+}
+
+
+/* Style the button */
+.tx3 button {
+    background-color: #ffffff; /* Button background color */
+    color: #000000; /* Button text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+/* text of section2 */
+.tx3 {
+    width: 600px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: white;
+    z-index: 1;
+
+}
+.tx3 h1{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: 40px;
+    
+}
+.tx3 p{
+    font-size: 20px;
+}
+
+.tx3 button {
+    background-color: #ffffff;
+    width: 200px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+}
+
+/* section4 */
+.vector2 img {
+    width: 600px;
+}
+
+.section3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* padding: 80px; */
+    width: 100%;
+    height: 100vh;
+    padding-top: 40px;
+}
+
+.tx4 {
+    padding: 20px;
+    margin-top: 40px;
+    width: 600px;
+    
+    
+}
+
+.tx4 h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+.tx4 p{
+    font-size: 20px;
+}
+
+
+
+/* section5 */
+.section4 {
+
+    /* background: linear-gradient(52deg, rgba(67, 15, 97, 1) 0%, rgba(39, 11, 85, 1) 88%); */
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    color: white;
+    justify-content: space-around;
+    padding-top: 80px;
+    margin-top: 40px;
+    height: 100vh;
+}
+
+.vector3 img {
+    width: 550px;
+}
+
+/* secction6 */
+
+.paymentmethod ul li img {
+    width: 300px;
+    height:300px;
+}
+
+.paymentmethod ul li {
+    display: inline-block;
+    margin: 10px;
+}
+.paymentmethod h1{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.section5 {
+    text-align: center;
+    padding-top: 40px;
+    padding: 10px;
+    padding-top: 40px;
+    height: 100vh;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.tx6 h2 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn3 button {
+    background-color: #000000;
+    width: 250px;
+    height: 60px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    padding: 20px;
+}
+
+/* footer */
+.fsocial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    width: 100%;
+}
+
+/* social icons */
+.fsocial ul li {
+    display: inline-block;
+    margin: 20px;
+}
+
+/* social links */
+.fsocial ul li a {
+    color: white;
+}
+
+/* main sectio of footer */
+.fmain {
+    background-color: #1D2331;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 60px;
+}
+
+/* head of footer */
+.fhead {
+    background-color: #5436CA;
+    display: flex;
+    justify-content: center;
+}
+/* fmain contenr */
+.fmain ul li {
+    display: inline-block;
+    margin: 45px;
+}
+/* logo and description */
+.name {
+    width: 400px;
+}
+/* paragraph of logo */
+
+/* usefull links */
+.links h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.links ul li {
+    display: block;
+    margin: 10px;
+}
+
+.links ul li a {
+  
+    color: white;
+    text-decoration: none;
+}
+/* contacts */
+.contact ul li {
+    display: block;
+    margin: 15px;
+}
+.contact ul li a {
+    color: white;
+    text-decoration: none;
+   
+}
+
+.contact h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.tx7 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    color: white;
+    padding-left: 10px;
+}
+/* footer margin */
+footer {
+    margin-top: 80px;
+}
+/* copyright */
+.copyright {
+    color: white;
+    text-align: center;
+    background-color: #141B29;
+    padding: 10px;
+  
+}
+/* footer head */
+.fhead {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+}
+
+/* responsive menu */
+.rtoogle h4 {
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+/* responsivr menu main */
+.rnav {
+    background-color: black;
+    width: 100%;
+    color: white;
+    height: 40vh;
+    display: none;
+    flex-direction: column;
+    animation: nav 1s ease 0s 1 normal forwards;
+    position: fixed;
+    z-index: 1;
+
+}
+/* Youtube videos */
+.youtube-videos{
+    background-color: #000000;
+    padding: 40px;
+    text-align: center;
+    /* width: 100%; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     flex-direction: column;
+}
+.yt-vdideos iframe{
+    border-radius: 20px;
+    width: 500px;
+    height: 300px;
+}
+.intro-video iframe{
+    background-color: #FDD501;
+    border-radius: 20px;
+    width: 500px;
+    height: 300px;
+
+  
+    
+}
+
+.yt-vdideos ul li{
+    display: inline-block;
+    margin: 5px;
+}
+.yt-title{
+color: white;
+
+padding: 80px;
+font-size: 30px;
+font-family: sans-serif;
+margin-top: auto;
+}
+.yt-button{
+    padding: 80px;
+
+    width: 500px;
+}
+.yt-button button{
+    width: 400px;
+    height: 80px;
+    font-size: 20px;
+}
+/* blog */
+.bloger{
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+}
+.blog-title{
+    padding: 80px;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+.blog-post-card {
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.blog-post-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.blog-post-image {
+    width: 100%;
+    height: auto;
+}
+
+.blog-post-content {
+    padding: 20px;
+}
+
+.blog-post-title {
+    font-size: 1.5em;
+    margin: 0;
+    color: #333;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+.blog-post-description {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.blog-post-link {
+    display: inline-block;
+    font-size: 1em;
+    color: #000000;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid #000000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.blog-post-link:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+.blog-posts ul li{
+    display: inline-block;
+    margin: 10px;
+}
+
+/* aniamtion for openining menu */
+@keyframes nav {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* responsive menu links */
+.rmenu ul li {
+    display: block;
+    margin: 20px;
+}
+
+.rmenu {
+    background-color: #000000;
+    text-align: center;
+    position: relative;
+    z-index: 2; 
+}
+
+.rmenu ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    
+}
+
+.rmenu ul li a:hover {
+    color: red;
+    transition: 0.5s;
+}
+/* heador of rmenu */
+.rhead {
+    background-color: #1B1B1B;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* close button */
+.close:hover {
+    cursor: pointer;
+    color: red;
+    transition: 0.5s;
+}
+/* Servic page Css */
+#sheader{
+    background-color: #000000;
+    height: 60px;
+    padding: 0;
+}
+#backs{
+    color: black;
+}
+/* borwse projects */
+.s7{
+    display: flex;
+
+}
+.protext h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 60px;
+}
+.side1{
+    background-color: yellow;
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.side2{
+width: 50%;
+}
+.pbutton{
+    margin-top: 10px;
+  
+}
+.pbutton button{
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: #40E15D;
+    color: white;
+}
+.pimg img{
+height: 100vh;
+width: 100%;
+}
+/* media query */
+/* media one */
+.other a img{
+    width: 80px;
+    padding-top: 10px;
+}
+.select ul li{
+    display: inline-block;
+    margin: 10px;
+    
+}
+
+
+.select p{
+
+   position: relative;
+   bottom: 30px;
+}
+.other{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    z-index: 999; /* Ensure it's above other content */
+    display: none;
+    animation: fiver 2s ease 0s 1 normal forwards;
+}
+@keyframes fiver {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: scale(0);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: scale(0.7);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: scale(0.84);
+	}
+
+	89% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: scale(0.95);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
+}
+.select{
+    
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background-color: #fff; /* Background color of the content */
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000; /* Place content above overlay */
+        border-radius: 30px;
+        
+    }
+    .select h2{
+        font-family: 'Roboto', sans-serif;
+    }
+    /* Style the content inside the overlay as needed */
+ 
+    
+    /* unavailable */
+   .unavailble{
+        width: 300px;
+        background-color: white;
+ border-radius: 30px;
+        padding: 40px;
+        text-align: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        font-family: 'Roboto', sans-serif;
+        z-index: 1;
+        /* display: none; */
+        
+    }
+    .okay button{
+        width: 80px;
+        padding: 10px;
+        background-color: yellow;
+        cursor: pointer;
+        border: none;
+        font-family: 'Roboto', sans-serif;
+    }
+/* Add styles for the loader */
+
+
+@media only screen and (max-width:1468px){
+.bloger{
+    height: auto;
+}
+
+
+}
+
+
+@media only screen and (max-width:1103px){
+    .yt-vdideos iframe{
+        width: 400px;
+    }
+    .tx2{
+ margin-top: 40px;
+    }
+    .intro-video iframe{
+        width: 400px;
+    }
+    .youtube-videos{
+        height: auto;
+    }
+    .yt-title{
+        font-size: auto;
+    }
+    .section3,.section4,.section5.s7{
+        height: auto;
+
+    }
+    .section1 iframe{
+        width: 400px;
+    }
+.youtube-videos{
+    margin-top: 40px;
+}
+   .colege{
+    /* background-color: #5436CA; */
+    padding-top: 180px;
+   }
+  
+}
+
+@media screen and (max-width:883px) {
+
+    /* heador */
+    .center h1 {
+        font-size: 40px;
+
+    }
+    .paymentmethod{
+        height: auto;
+    }
+    .section5{
+        height: auto ;
+    }
+
+    .fmain {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        column-gap: normal;
+    }
+
+    .links {
+        margin-top: 40px;
+    }
+
+    .contact {
+        margin-top: 40px;
+    }
+
+    .fhead {
+        display: flex;
+        justify-content: center;
+    }
+
+    .section1 {
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+        height: auto;
+        
+
+    }
+    .fsocial ul li{
+       margin: 10px;
+    }
+    .tx7{
+        font-size: small;
+     
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+       right: 20px;
+    }
+    .fsocial{
+        width: 100%;
+    }
+   
+.tx2{
+    height: auto;
+    width: auto;
+
+}
+    .section3 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section4 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .colege img {
+        width: 400px;
+    }
+
+    .colege {
+        margin-top: 130px;
+    }
+
+    footer {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .vector3 img {
+        width: 300px;
+    }
+
+    .vector2 img {
+        width: 300px;
+    }
+
+    .tx4 {
+        width: 450px;
+    }
+    .section1{
+        height: auto;
+    }
+
+}
+/* media 2 */
+@media only screen and (max-width:834px) {
+    .yt-button{
+        width: 150px;
+    }
+    .section1,.section2,.section3{
+        flex-direction: column-reverse;
+    }
+   .tx2 p{
+  
+   padding-right:20px ;
+   }
+    .yt-button button {
+        width: 150px;
+        font-size: 10px;
+        height: 60px;
+    }
+    .yt-title{
+        font-size: 10px;
+        /* width: 100%; */
+    }
+    .fsocial {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .cimg {
+        display: none;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .ctext {
+        width: 450px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .rtoogle h4 {
+        display: inline;
+    }
+    .section1{
+        height: auto;
+    }
+
+    .tx3 {
+        width: 300px;
+    }
+
+    .tx3 p {
+        font-size: 15px;
+    }
+
+    .tx4 {
+        width: 300px;
+        font-size: 15px;
+    }
+
+    .name {
+        width: 300px;
+    }
+
+    body {
+        overflow: auto;
+    }
+    .popup-content{
+        width: 300px;
+    }
+    .blog-title{
+        font-size: 10px;
+        /* background-color: red; */
+        /* width: 100%; */
+        text-align: center;
+    }
+    
+}
+/* media last */
+@media only screen and (max-width:471px) {
+    /* yt section additon */
+    .yt-vdideos iframe{
+        width: 300px;
+        height: 200px;
+    }
+    #introdouction{
+        width: 300px;
+        height: 200px;
+     
+    }
+.section1 iframe{
+    width: 300px;
+    height: 200px;
+}
+    .yt-title{
+       
+        font-size: 10px;
+    }
+
+  
+
+    .center h1 {
+        font-size: 40px;
+        margin-right: 20px;
+    }
+
+    .center p {
+        font-size: 15px;
+        margin-right: 20px;
+
+
+    }
+
+    .center {
+        margin-right: 20px;
+    }
+
+    .btns button {
+        width: 150px;
+    }
+
+    .colege img {
+        width: 300px;
+    }
+}
+@media only screen and (max-width:368px) {
+    .popup-content{
+        width: 250px;
+    }
+}

@@ -1,0 +1,112 @@
+body{
+background-color: #F3F4F9; 
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+font-family: sans-serif;
+}
+
+.img img{
+    
+width: 200px;
+border-radius: 40px;
+}
+main{
+    width: 600px;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+        
+}
+.yt{
+    display: flex;
+    align-items: center;
+   background: white;
+   padding: 20px;
+   width: 300px;
+   height: 40px;
+   border-radius: 20px;
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+   transition: all 0.3s ease; /* Optional: Add transition for the whole element */
+}
+
+
+.box{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 300px;
+    
+}
+.arrow p{
+    background-color: #F3F4F9;
+    /* background-color: red; */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+.arrow p:hover {
+    transform: translateX(10px); /* Move 10px to the left */
+}
+.socials{
+    /* background-color: red; */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  
+}
+.iconame{
+    padding-left: 5px;
+}
+a{
+
+    text-decoration: none;
+    color: black;
+}
+.socials ul li{
+    display: block;
+    margin: 20px;
+}
+
+.yt:hover .arrow {
+    transform: translateX(10px); /* Move the arrow 10px to the right on hover */
+    transition: transform 0.3s ease; /* Smooth transition for the arrow */
+}
+.icon {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+.text{
+    /* background-color: aqua; */
+    width: auto;
+}
+
+@media screen and (max-width:547px) {
+main{
+    width: 300px;
+}
+.yt{
+    width: 220px;
+}
+.socials{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+     padding-right: 10%;
+}
+
+
+}
