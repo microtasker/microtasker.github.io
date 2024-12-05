@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microclips - Short, Engaging Video Clips for Your Entertainment</title>
+    <meta name="description" content="Microclips offers a collection of captivating short video clips that entertain and inspire. Discover quick, fun, and engaging videos perfect for every mood and moment.">
+    <script src="https://kit.fontawesome.com/97e9dcf34a.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <!-- Firebase Firestore (for database) -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+
+
+</head>
+
+<body>
+    <div class="side1">
+        <div class="logo">
+            <img src="" alt="">
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Share</a></li>
+                <li><a href="">Browse-Templates</a></li>
+                <li><a href="">Subscribe</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="center">
+        <div class="videos">
+            <div class="contnet">
+                <video >
+                    
+                </video>
+               
+            </div>
+              <!-- Overlay section -->
+  
+          
+</div>
+<script>
+    // Firebase configuration (replace with your own Firebase details)
+    const firebaseConfig = {
+        apiKey: "AIzaSyCQVUUdVNNGs89zLDJuMGa-_8wiWSJyic4",
+        authDomain: "microclips-d6900.firebaseapp.com",
+        projectId: "microclips-d6900",
+        storageBucket: "microclips-d6900.appspot.com",
+        messagingSenderId: "295362140208",
+        appId: "1:295362140208:web:fa2f4b358fbeb79976b5f5"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    let currentIndex = 0; // Track the current index of videos
+    let videosData = [];  // Store all fetched video data
+    let selectedVideoId = null; // Track the selected video ID from URL
+
+    // Fetch and display videos
+    async function fetchVideos() {
+        const videoContainer = document.querySelector('.videos');
+        try {
+            const querySnapshot = await db.collection("videos").get();
+
+            if (querySnapshot.empty) {
+                videoContainer.innerHTML = 'No videos found.';
+                return;
+            }
+
+            // Collect all video data in an array
+            querySnapshot.forEach((doc) => {
+                const videoData = doc.data();
+                videoData.id = doc.id; // Assign unique video ID from Firestore document
+                videosData.push(videoData);
+            });
+
+            // Get video_id from URL if present
+            const urlParams = new URLSearchParams(window.location.search);
+            selectedVideoId = urlParams.get('video_id'); // Get video ID from URL
+
+            if (selectedVideoId) {
+                const selectedVideo = videosData.find(video => video.id === selectedVideoId);
+                if (selectedVideo) {
+                    videosData = [selectedVideo, ...videosData.filter(video => video.id !== selectedVideoId)];
+                }
+            } else {
+                shuffleArray(videosData);
+            }
+
+            // Load the first video from the fetched data (with limit)
+            loadNextVideo(videoContainer);
+        } catch (error) {
+            console.error('Error fetching videos:', error);
+            videoContainer.innerHTML = 'Failed to load videos. Please try again later.';
+        }
+    }
+
+    // Function to load next video and autoplay it
+    function loadNextVideo(videoContainer) {
+    if (currentIndex >= videosData.length) return; // No more videos to load
+
+    const videoData = videosData[currentIndex];
+
+    // Create a container for each video
+    const videoWrapper = document.createElement('div');
+    videoWrapper.classList.add('video-container');
+    videoWrapper.style.position = 'relative'; // Ensure it's positioned for overlays
+
+    // Create the placeholder element
+    const placeholder = document.createElement('div');
+    placeholder.classList.add('placeholder');
+
+    placeholder.style.width = '100%';
+    placeholder.style.height = '100vh';
+    placeholder.style.backgroundColor = 'black'; // Placeholder background color
+    placeholder.style.display = 'flex';
+    placeholder.style.justifyContent = 'center';
+    placeholder.style.alignItems = 'center';
+    placeholder.style.zIndex = '1'; // Ensure it appears above the video
+    placeholder.innerHTML = '<p>Loading... Thanks for your patience!</p>';
+    videoWrapper.appendChild(placeholder);
+
+    // Create the video element
+    const video = document.createElement('video');
+    video.width = 400;
+    video.controls = false; // Disable default controls to implement custom controls
+    video.innerHTML = `
+        <source src="${videoData.video_url}" type="video/mp4">
+        Your browser does not support the video tag.
+    `;
+    video.style.display = 'none'; // Initially hide the video
+    videoWrapper.appendChild(video);
+
+
+        // Create the play/pause overlay and position it at the bottom center
+        const playPauseOverlay = document.createElement('div');
+        playPauseOverlay.classList.add('play-pause-overlay');
+        playPauseOverlay.innerHTML = '<i class="fa-solid fa-play"></i>'; // Play icon by default
+        playPauseOverlay.style.position = 'absolute';
+        playPauseOverlay.style.bottom = '10px'; // Position it near the bottom
+        playPauseOverlay.style.left = '50%'; // Center it horizontally
+        playPauseOverlay.style.transform = 'translateX(-50%)';
+        playPauseOverlay.style.display = 'none'; // Initially hidden
+        videoWrapper.appendChild(playPauseOverlay);
+
+        // Add the panel (like the share button and the overlay)
+        const panel = document.createElement('div');
+        panel.classList.add('panel');
+        
+        // Share button in the bottom right
+        const shareButton = document.createElement('div');
+        shareButton.classList.add('share');
+        shareButton.innerHTML = '<p><i class="fa-solid fa-share"></i></p>';
+        shareButton.addEventListener('click', () => {
+            shareVideo(videoData.id);
+        });
+        videoWrapper.appendChild(shareButton);
+
+        // Overlay section for logo, name, and caption at the bottom
+        const overlay = document.createElement('div');
+        overlay.classList.add('overlay');
+        overlay.style.position = 'absolute';
+        overlay.style.bottom = '6px';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+        overlay.style.padding = '10px';
+        overlay.style.color = '#fff';
+
+        const container = document.createElement('div');
+        container.classList.add('logo-name-container'); // Add a class for styling
+
+        // Create the logo element
+        const logo = document.createElement('div');
+        logo.classList.add('logo');
+        logo.innerHTML = '<img src="logo23.svg" alt="microtasker">';
+        container.appendChild(logo);
+
+        // Create the name element
+        const name = document.createElement('div');
+        name.classList.add('name');
+        name.innerHTML = '<h5>microclips</h5>';
+        container.appendChild(name);
+
+        // Append the container to the overlay
+        overlay.appendChild(container);
+
+        const caption = document.createElement('div');
+        caption.classList.add('caption');
+        caption.innerHTML = `<p>${videoData.title}</p>`;
+        overlay.appendChild(caption);
+
+        // Append overlay to the video wrapper
+        videoWrapper.appendChild(overlay);
+
+        // Add the video panel with the share button and overlay
+        videoWrapper.appendChild(panel);
+
+        // Handle video display and autoplay for the first video
+        video.addEventListener('canplay', () => {
+            video.style.display = 'block';
+            video.style.height = 'block'; // Show the video when ready
+            placeholder.style.display = 'none'; // Hide the placeholder
+
+            if (currentIndex === 0) {
+                video.play(); // Autoplay the very first video
+                playPauseOverlay.innerHTML = '<i class="fa-solid fa-pla"></i>'; // Show Pause icon initially
+                playPauseOverlay.style.display = 'block'; // Show the overlay
+            }
+        });
+
+        // Update the border (or progress) as the video plays
+        video.addEventListener('timeupdate', () => {
+            const progress = (video.currentTime / video.duration) * 100; // Calculate progress percentage
+            video.style.borderBottom = `5px solid transparent`; // Keep the base border transparent
+            video.style.borderImage = `linear-gradient(to right, red ${progress}%, transparent ${progress}%) 1`; // Animate border progress
+        });
+
+        // Reset the border on video end
+        video.addEventListener('ended', () => {
+            video.style.borderImage = ''; // Reset the border when the video ends
+            playPauseOverlay.style.display = 'none'; // Hide the overlay after video ends
+            currentIndex++; // Move to the next video
+            loadNextVideo(videoContainer); // Load next video
+            videoWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the next video smoothly
+        });
+
+      // Get the video element and the overlay container for play/pause symbol
+
+// Function to update the play/pause overlay based on video state
+function updatePlayPauseOverlay() {
+    if (video.paused) {
+        playPauseOverlay.innerHTML = '<i class="fa-solid fa-play"></i>'; // Show play symbol
+        playPauseOverlay.style.display = 'block'; // Show the symbol when paused
+    } else {
+        playPauseOverlay.style.display = 'none'; // Hide symbol when playing
+    }
+}
+
+// Event listener for video play/pause toggle on click
+video.addEventListener('click', () => {
+    if (video.paused) {
+        video.play(); // Play the video if paused
+    } else {
+        video.pause(); // Pause the video if playing
+    }
+    updatePlayPauseOverlay(); // Update the overlay based on current state
+});
+
+// Event listeners for pause and play to update the symbol visibility
+video.addEventListener('pause', updatePlayPauseOverlay); // When paused, show the play symbol
+video.addEventListener('play', updatePlayPauseOverlay); // When playing, hide the symbol
+
+// Initial call to check the state when video is loaded
+updatePlayPauseOverlay();
+        // Add the wrapper to the main video container
+        videoContainer.innerHTML = ''; // Clear the container before adding the next video
+        videoContainer.appendChild(videoWrapper);
+    }
+
+    let isVideoTouched = false;
+let touchStart = 0;
+let touchEnd = 0;
+
+// Prevent default scrolling only when interacting with the video
+window.addEventListener('touchstart', (event) => {
+    touchStart = event.changedTouches[0].screenY;
+
+    // Check if touch is on the video area
+    const video = document.querySelector('.video-container video');
+    if (video && video.contains(event.target)) {
+        isVideoTouched = true;
+        // Prevent page scroll if touching video
+        event.preventDefault();
+    }
+});
+
+window.addEventListener('touchmove', (event) => {
+    // Prevent scrolling if video is touched
+    if (isVideoTouched) {
+        event.preventDefault();
+    }
+});
+
+window.addEventListener('touchend', (event) => {
+    touchEnd = event.changedTouches[0].screenY;
+
+    // Only allow scroll-like actions when not interacting with the video
+    if (!isVideoTouched) {
+        if (touchStart > touchEnd) {
+            // Swipe up, load next video
+            if (currentIndex < videosData.length - 1) {
+                currentIndex++;
+                loadNextVideo(document.querySelector('.videos'));
+            }
+        } else if (touchStart < touchEnd) {
+            // Swipe down, load previous video
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadNextVideo(document.querySelector('.videos'));
+            }
+        }
+    }
+
+    // Reset the flag to allow normal scrolling again
+    isVideoTouched = false;
+});
+
+// Allow scrolling if video is not being interacted with
+window.addEventListener('touchstart', (event) => {
+    const video = document.querySelector('.video-container video');
+    // Allow scrolling when the touch is not on the video
+    if (!video.contains(event.target)) {
+        isVideoTouched = false;
+    }
+});
+
+    // Shuffle the video data array to randomize the video order
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+        }
+    }
+
+    function shareVideo(videoId) {
+        const videoData = videosData.find(video => video.id === videoId);
+        if (videoData) {
+            const shareText = `Check out this amazing video: ${videoData.title}`;
+            const videoUrl = window.location.origin + `?video_id=${videoData.id}`; // Generate the URL with video ID
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Video Share',
+                    text: shareText,
+                    url: videoUrl, // Share the URL with the video ID
+                }).catch(error => console.log('Error sharing:', error));
+            } else {
+                alert(`Check out this amazing video: ${videoUrl}`); // Fallback for browsers that do not support Web Share API
+            }
+        }
+    }
+    function enterFullScreen(videoElement) {
+    if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+    } else if (videoElement.mozRequestFullScreen) { // Firefox
+        videoElement.mozRequestFullScreen();
+    } else if (videoElement.webkitRequestFullscreen) { // Chrome and Safari
+        videoElement.webkitRequestFullscreen();
+    }
+}
+
+
+    // Initial function call to fetch videos and load the first video
+    fetchVideos();
+</script>
+
+
+
+
+
+
+
+
+
+    
+        
+</body>
+
+</html>
