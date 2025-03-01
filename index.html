@@ -59,38 +59,61 @@
                 <button class="popup-btn" type="submit">Subscribe</button>
             </form>
         </div>
-        <script>
-            var form = document.getElementById("subscribe-form");
-            
-            async function handleSubmit(event) {
-              event.preventDefault();
-              var status = document.getElementById("subscribe-form-status");
-              var data = new FormData(event.target);
-              fetch(event.target.action, {
+<script>
+    var form = document.getElementById("subscribe-form");
+
+    async function handleSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var email = document.getElementById("email").value;
+
+        try {
+            // Send data to Google Sheets
+            let sheetResponse = await fetch("https://script.google.com/macros/s/AKfycbxFonppiFAb3F55wxNDSSw3VJiJJkJZ3xrJf6Du-EdgfW5YX4QzLLn9kYYDRAxVbJkIhg/exec", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ Email: email })
+            });
+
+            if (!sheetResponse.ok) {
+                throw new Error("Failed to save data to Google Sheets");
+            }
+
+            let sheetData = await sheetResponse.text();
+            console.log("Saved to Google Sheets:", sheetData);
+
+            // Now submit to Formspree
+            var formData = new FormData(form);
+            let formspreeResponse = await fetch(form.action, {
                 method: form.method,
-                body: data,
+                body: formData,
                 headers: {
                     'Accept': 'application/json'
                 }
-              }).then(response => {
-                if (response.ok) {
-                document.getElementById("subscribe-popup2").style.display="block"
-                  form.reset()
+            });
+
+            if (formspreeResponse.ok) {
+                document.getElementById("subscribe-popup2").style.display = "block";
+                form.reset();
+            } else {
+                let formData = await formspreeResponse.json();
+                var status = document.getElementById("subscribe-form-status");
+                if (formData.errors) {
+                    status.innerHTML = formData.errors.map(error => error.message).join(", ");
                 } else {
-                  response.json().then(data => {
-                    if (Object.hasOwn(data, 'errors')) {
-                      status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                    } else {
-                      status.innerHTML = "Oops! There was a problem submitting your form"
-                    }
-                  })
+                    status.innerHTML = "Oops! There was a problem submitting your form.";
                 }
-              }).catch(error => {
-                
-              });
             }
-            form.addEventListener("submit", handleSubmit)
-          </script>
+
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    form.addEventListener("submit", handleSubmit);
+</script>
 
         <!-- logic -->
     </div>
@@ -586,40 +609,78 @@
         </div>
         <script src="index.js"></script>
         <script>
-            document.getElementById("subscribe-form").addEventListener("submit", function(event) {
-             event.preventDefault(); // Prevent default form submission
-           
             
-        // Get email from form and derive name from it
-        const email = document.querySelector('input[name="email"]').value;
-        const nameFromEmail = email.split("@")[0]; // Extract name from email
-
-        // Prepare form data with the derived name
-        const formData = {
-            name: nameFromEmail,  // Use name derived from email
-            email: email
-        };
-             // Send form data to Google Apps Script Web App
-             fetch('https://script.google.com/macros/s/AKfycbxjcWVqm4gM5EI6gKIrMHzsP5fdLz194Cx_SguMFU8HixNvp_ut-WW-BQ9HbLnPDSptLg/exec', {
-               method: 'POST',
-             mode: 'no-cors', // This disables CORS checking
-             body: JSON.stringify(formData),
-             headers: {
-               'Content-Type': 'application/json'
-             }
-           })
-           .then(() => {
-             console.log('Data sent successfully (no-cors mode)');
+            document.getElementById("subscribe-form").addEventListener("submit", async function(event) {
+                event.preventDefault(); // Prevent default form submission
+                
+                // Get email and derive name
+                const email = document.querySelector('input[name="email"]').value.trim();
+                if (!email) {
+                    alert("Please enter a valid email!"); // Show error if empty
+                    return;
+                }
             
-           })
-           .catch((error) => {
-             console.error('Error:', error);
-           
-           });
-           });
-           
-           </script>
-     
+                const nameFromEmail = email.split("@")[0]; // Extract name from email
+            
+                // Prepare form data
+                const formData = {
+                    name: nameFromEmail,  
+                    email: email
+                };
+            
+                try {
+                    // Send data to Google Apps Script Web App
+                    await fetch('https://script.google.com/macros/s/AKfycbxkqjQe2IJk3xDwRMZkWKxzk6U4P058l8rU4RLSWLGRnq44c1wafT5APNQ9rUZI9-EdjQ/exec', {
+                        method: 'POST',
+                        mode: 'no-cors', // Fix CORS issue
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+            
+                    console.log('Data sent successfully (no-cors mode)');
+               // Show success message
+                    document.getElementById("subscribe-form").reset(); // Reset form
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert("Error submitting form. Please try again!"); // Show error message
+                }
+            });
+            </script>
+            <script>
+                var form = document.getElementById("subscribe-form");
+                
+                async function handleSubmit(event) {
+                  event.preventDefault();
+                  var status = document.getElementById("my-form-status");
+                  var data = new FormData(event.target);
+                  fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                  }).then(response => {
+                    if (response.ok) {
+                        document.getElementById("subscribe-popup2").style.display="block"; 
+                      form.reset()
+                    } else {
+                      response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                          status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                        } else {
+                          status.innerHTML = "Oops! There was a problem submitting your form"
+                        }
+                      })
+                    }
+                  }).catch(error => {
+                    status.innerHTML = "Oops! There was a problem submitting your form"
+                  });
+                }
+                form.addEventListener("submit", handleSubmit)
+              </script>
+            
 </body>
 
 </html>
