@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Data into Firestore</title>
+</head>
+<body>
+
+    <h2>Submit Data to Firestore</h2>
+    <form id="dataForm">
+        <input type="text" id="thumbnail" placeholder="Enter Thumbnail URL" required><br><br>
+        <select name="category" id="categorey">
+            <option value="Logo-Design">Logo-Design</option>
+            <option value="Social-Post">Social-Post</option>
+            <option value="Business-Card">Business-Card</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Firebase JavaScript -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDXyQl8pfoSlcAE-1zbyhGMExrbn_eNyPM",
+            authDomain: "microtemplates-eb2e7.firebaseapp.com",
+            projectId: "microtemplates-eb2e7",
+            storageBucket: "microtemplates-eb2e7.appspot.com",
+            messagingSenderId: "673841508032",
+            appId: "1:673841508032:web:11d735db56be6505254725",
+            measurementId: "G-BWQH87DFY0"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Wait until DOM is fully loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("dataForm").addEventListener("submit", async function(event) {
+                event.preventDefault(); // Prevent page reload
+
+                // Get form input values
+                const thumbnail = document.getElementById("thumbnail").value.trim();
+                const category = document.getElementById("categorey").value.trim();
+
+                // Validate input fields
+                if (!thumbnail || !category) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+
+                try {
+                    // Add data to Firestore
+                    await addDoc(collection(db, "microtemplates"), {
+                        thumbnail: thumbnail,
+                        category: category, // Corrected field name
+                        timestamp: serverTimestamp() // Auto-generate timestamp
+                    });
+
+                    alert("Data successfully added to Firestore!");
+                    document.getElementById("dataForm").reset(); // Reset form fields
+                } catch (error) {
+                    console.error("Error adding document:", error);
+                    alert("Failed to add data. Check console for errors.");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

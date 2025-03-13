@@ -19,6 +19,7 @@
 		opacity: 1;
 	}
 }
+
 main{
     margin-left: auto;
     margin-right: auto;
@@ -26,12 +27,14 @@ main{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 20px;
-    display: none;
+    padding:80px;
+
+    /* display: none; */
 }
+
 #label{
 position: relative;
-right: 20%;
+left:0%;
 
 }
 .form-check{

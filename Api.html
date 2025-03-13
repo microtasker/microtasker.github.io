@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="videos"></div>
+
+
+    </div>
+<style>
+    #videos{
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+</style>
+
+<script>
+  const API_KEY = "AIzaSyBI1f-fah3UeUO7IcsjiWdSmvEo4ohdn_Y"; // Replace with your actual API Key
+  const PLAYLIST_ID = "PLpzvcZPxCn5FF3qOcEIJzJeq9g0moq6dP";
+  const MAX_RESULTS = 3; // Number of videos to fetch
+
+  async function fetchVideos() {
+    const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=${MAX_RESULTS}&playlistId=${PLAYLIST_ID}&key=${API_KEY}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const videosDiv = document.getElementById("videos");
+    
+    videosDiv.innerHTML = data.items
+      .map(video => {
+        const videoId = video.snippet.resourceId.videoId;
+        return `    <div class="template-videos">
+           
+        <iframe width="360" height="200" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        `      })
+      .join("");
+  }
+
+  fetchVideos();
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image with Text Overlay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Show overlay on hover */
+       
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://i.postimg.cc/fy2pcwzy/05.png" alt="Image">
+        <div class="overlay">Logo-Dresign</div>
+    </div>
+
+</body>
+</html>
+
+</body>
+</html>

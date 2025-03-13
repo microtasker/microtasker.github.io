@@ -333,7 +333,7 @@
                             creativity, and problem-solving.</p>
                         <br>
                         <div class="btn2">
-                            <a href="projects.html"><button style="background-color: black; color: white;">
+                            <a href="https://microtemplates.pro/"><button style="background-color: black; color: white;">
                                     Browse Now</button></a>
                         </div>
                     </div>
@@ -440,32 +440,11 @@
             <div class="reveal">
                 <div class="youtube-videos">
                     <div class="yt-title">
-                        <h1>Watch our Awsome Content </h1>
+                        <h1>Our Top Usefull Templates </h1>
                     </div>
-                    <div class="yt-vdideos">
-                        <ul>
-                            <li>
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/yZN4Y8JT6Y4?si=aFiY5jIdoleE0Pr-"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </li>
-                            <li>
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/906lVR17maU?si=ZSIcyWU3BD339j2s"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </li>
-                            <li><iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/Edb-fEP7Q_0?si=ANA2_3yykdWbkc_4"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></li>
-                        </ul>
+                    <div id="videos"></div>
 
-                    </div>
+
                     <div class="yt-button">
                         <a target="_blank" href="https://bit.ly/4b03Mki"><button class="Subscribe"><i
                                     class="fa-brands fa-youtube"></i> <span> Watch More On
@@ -473,69 +452,49 @@
                                 </span></button></a>
                     </div>
                 </div>
+            <style>
+                #videos{
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+                #videos iframe{
+                    width: 400px;
+                    height: 300px;
+                    border-radius: 5px;
+                }
+            </style>
+            
+            <script>
+              const API_KEY = "AIzaSyBI1f-fah3UeUO7IcsjiWdSmvEo4ohdn_Y"; // Replace with your actual API Key
+              const PLAYLIST_ID = "PLpzvcZPxCn5FF3qOcEIJzJeq9g0moq6dP";
+              const MAX_RESULTS = 3; // Number of videos to fetch
+            
+              async function fetchVideos() {
+                const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=${MAX_RESULTS}&playlistId=${PLAYLIST_ID}&key=${API_KEY}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                const videosDiv = document.getElementById("videos");
+                
+                videosDiv.innerHTML = data.items
+                  .map(video => {
+                    const videoId = video.snippet.resourceId.videoId;
+                    return `    <div class="template-videos">
+                       
+                    <iframe width="360" height="200" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    `      })
+                  .join("");
+              }
+            
+              fetchVideos();
+            </script>
+                    
+                </div>
             </div>
             <div class="reveal">
-                <div class="bloger">
-                    <div class="blog-title">
-                        <h1>Read Our Usefull Blog Posts</h1>
-                    </div>
-                    <div class="blog-posts">
-                        <ul>
-                            <li>
-                                <div class="blog-post-card">
-                                    <img src="https://images.unsplash.com/photo-1672307974995-cd253f7f7eeb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                        alt="5 Essential Tips for Growing Your Online Business" class="blog-post-image">
-                                    <div class="blog-post-content">
-                                        <h2 class="blog-post-title">5 Essential Tips for Growing Your Online Business
-                                        </h2>
-                                        <p class="blog-post-description">Clean code is the foundation of a
-                                            well-functioning
-                                            website. When your code is neat and organized, it’s easier to maintain,
-                                            debug,
-                                            and update. </p>
-                                        <a target="_blank"
-                                            href="https://microtasker1.blogspot.com/2024/08/5-essential-tips-for-growing-your_76.html"
-                                            class="blog-post-link">Read More</a>
-                                    </div>
-                            </li>
-                            <li>
-                                <div class="blog-post-card">
-                                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifCrFDmIU4UX5ev_GrkdiL2ERzX_nwdZyFnqrmo85PbZySCcBQFUFm7p-119ojAQ43W_UTRbIa7pCXhiuTBYbe-NdvCo-zBNnqTb4yOa_8IXq7gbunoEefd7xbclNOT-qGz6clPNem69Oo15bMUkKK7y4Mfjk3UxifHfiSNv7ufNIpNVSz6aCP9nLulOP0/w640-h360/maxresdefault%20(1).jpg"
-                                        alt="Are AI Taking Jobs? Exploring the Impact of
-                                        Artificial" class="blog-post-image">
-                                    <div class="blog-post-content">
-                                        <h2 class="blog-post-title">Are AI Taking Jobs? Exploring the Impact of
-                                            Artificial
-                                            Intelligence on Employment</h2>
-                                        <p class="blog-post-description">In today's rapidly advancing world, the rise of
-                                            artificial intelligence (AI) has sparked a crucial question: Are AI taking
-                                            our
-                                            jobs? </p>
-                                        <a target="_blank"
-                                            href="https://microtasker1.blogspot.com/2024/05/are-ai-taking-jobs-exploring-impact-of.html"
-                                            class="blog-post-link">Read More</a>
-                                    </div>
-                            </li>
-                            <li>
-                                <div class="blog-post-card">
-                                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuqLpDkptRFmOK5RqYk2Ie2W3sIO41-1xD8-owjHhqwXBwpuX-LOFuiyw9Miq_xSWfxnrlCVGkG397juRAJOQ1gdJRr8Aiq8BEjMY4uWel7NXM-EhgZa3ju_TY7xnhCfNE7DjxkUjBSscdw-I8UigXCx8jAtwJQXG3uox4kmHbfPycPpIRNMOr6yW4WK3_/w524-h373/carlos-muza-hpjSkU2UYSU-unsplash.jpg"
-                                        alt="Why Your Website's First Impression Matters" class="blog-post-image">
-                                    <div class="blog-post-content">
-                                        <h2 class="blog-post-title">Why Your Website's First Impression Matters – Boost
-                                            Trust & Drive Sales</h2>
-                                        <p class="blog-post-description">
-                                            In today’s digital age, your website often serves as the first point of
-                                            contact
-                                            between your business and potential customers. </p>
-                                        <a target="_blank"
-                                            href="https://microtasker1.blogspot.com/2024/08/5-essential-tips-for-growing-your_76.html"
-                                            class="blog-post-link">Read More</a>
-                                    </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="reveal">
+
+            </div>
         </main>
         <div class="reveal">
             <footer>
